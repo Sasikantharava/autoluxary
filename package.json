@@ -1,0 +1,17 @@
+{
+  "name": "luxury-auto-detailing",
+  "version": "1.0.0",
+  "description": "Luxury Auto Detailing MERN Stack Application",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\" \"npm run admin\"",
+    "server": "cd server && npm run dev",
+    "client": "cd client && npm start",
+    "admin": "cd admin && npm start",
+    "build": "cd client && npm run build && cd ../admin && npm run build",
+    "install-deps": "npm install && cd server && npm install && cd ../client && npm install && cd ../admin && npm install",
+    "seed": "cd server && npm run seed"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}

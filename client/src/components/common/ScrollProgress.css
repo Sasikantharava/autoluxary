@@ -1,0 +1,17 @@
+/* Scroll Progress Indicator */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 107, 53, 0.2);
+  z-index: 10000;
+}
+
+.scroll-progress-bar {
+  height: 100%;
+  background: var(--vibrant-orange);
+  width: 0;
+  transition: width 0.1s ease;
+}

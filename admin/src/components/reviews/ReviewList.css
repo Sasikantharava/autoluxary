@@ -1,0 +1,33 @@
+.review-list {
+  width: 100%;
+}
+
+.review-row {
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.review-row:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.review-row.selected {
+  background-color: rgba(255, 107, 53, 0.1);
+}
+
+.rating {
+  color: var(--warning-color);
+}
+
+.star {
+  color: rgba(255, 152, 0, 0.3);
+}
+
+.star.filled {
+  color: var(--warning-color);
+}
+
+.status-approved {
+  background-color: rgba(76, 175, 80, 0.2);
+  color: var(--success-color);
+}

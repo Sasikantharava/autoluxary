@@ -1,0 +1,33 @@
+.user-list {
+  width: 100%;
+}
+
+.user-row {
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.user-row:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.user-row.selected {
+  background-color: rgba(255, 107, 53, 0.1);
+}
+
+.role {
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.role-admin {
+  background-color: rgba(255, 107, 53, 0.2);
+  color: var(--primary-color);
+}
+
+.role-user {
+  background-color: rgba(76, 175, 80, 0.2);
+  color: var(--success-color);
+}
