@@ -1,7 +1,5 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPhone } from '@fortawesome/free-solid-svg-icons';
-import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { FaPhone, FaWhatsapp } from 'react-icons/fa';
 import './ContactFloatingButtons.css';
 
 const ContactFloatingButtons = () => {
@@ -27,7 +25,7 @@ const ContactFloatingButtons = () => {
           onClick={handleWhatsAppClick}
           aria-label="Contact via WhatsApp"
         >
-          <FontAwesomeIcon icon={faWhatsapp} className="floating-icon" />
+          <FaWhatsapp className="floating-icon" />
           <span className="tooltip left-tooltip">Chat on WhatsApp</span>
         </button>
       </div>
@@ -39,7 +37,7 @@ const ContactFloatingButtons = () => {
           onClick={handlePhoneClick}
           aria-label="Call us"
         >
-          <FontAwesomeIcon icon={faPhone} className="floating-icon" />
+          <FaPhone className="floating-icon" />
           <span className="tooltip right-tooltip">Call Us Now</span>
         </button>
       </div>
