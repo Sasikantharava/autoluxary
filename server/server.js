@@ -48,7 +48,8 @@ const allowedOrigins = [
   'http://localhost:3000',
   'http://localhost:3001',
   'http://localhost:3002',
-  'https://autoluxary.vercel.app', // Vercel frontend
+  'https://autoluxary.vercel.app',
+  'https://autoluxary-x753.vercel.app', // Vercel frontend
 ];
 
 app.use(cors({
