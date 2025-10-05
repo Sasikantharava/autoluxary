@@ -45,13 +45,14 @@ app.use(express.urlencoded({ extended: false }));
 // CORS middleware - Updated to include all origins
 app.use(cors({
   origin: [
-    'http://localhost:3000',  // Client
-    'http://localhost:3001',  // Admin
-    'http://localhost:3002'   // Alternative client port
+    'http://localhost:3000',
+    'http://localhost:3001',
+    'http://localhost:3002',
+    'https://autoluxary.vercel.app', // ✅ Your deployed frontend
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
 // Enable pre-flight requests for all routes
