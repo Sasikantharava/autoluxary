@@ -1,3 +1,4 @@
+// server.js
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -22,71 +23,73 @@ const { initEmailService } = require('./utils/emailService');
 const connectDB = require('./config/database');
 connectDB();
 
-// Initialize Express app
+// Initialize email service safely
+try {
+  initEmailService();
+} catch (err) {
+  console.error('Email service initialization failed:', err.message);
+}
+
+// Initialize Express
 const app = express();
 
-// ⚡ Trust proxy for Render (needed for rate limiting behind proxy)
+// Trust proxy (important for Render behind a proxy)
 app.set('trust proxy', 1);
 
 // Security middleware
 app.use(helmet());
 
-// Rate limiter
+// Rate limiting
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100,
+  max: 100, // limit each IP to 100 requests per windowMs
   message: 'Too many requests from this IP, please try again later.'
 });
 app.use('/api/', limiter);
 
-// Body parsers
+// Body parser
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: false }));
 
-// ✅ CORS setup
+// CORS configuration
 const allowedOrigins = [
   'http://localhost:3000',
   'http://localhost:3001',
   'http://localhost:3002',
-  'https://autoluxary.vercel.app',
-  'https://autoluxary-x753.vercel.app', // Vercel frontend
+  'https://autoluxary.vercel.app',      // frontend
+  'https://autoluxary-x753.vercel.app'  // admin
 ];
 
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin) return callback(null, true); // allow server-to-server / Postman
+  origin: function(origin, callback) {
+    if (!origin) return callback(null, true); // allow non-browser requests
     if (allowedOrigins.indexOf(origin) === -1) {
-      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
-      return callback(new Error(msg), false);
+      console.log('Blocked by CORS:', origin);
+      return callback(new Error('CORS policy does not allow access from this origin'), false);
     }
     return callback(null, true);
   },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-// Preflight for all routes
+// Enable preflight requests
 app.options('*', cors());
 
-// Mount API routes
+// Mount routes
 app.use('/api/auth', authRoutes);
 app.use('/api/bookings', bookingRoutes);
 app.use('/api/reviews', reviewRoutes);
 app.use('/api/gallery', galleryRoutes);
 app.use('/api/users', userRoutes);
 
-// Initialize email service with safe error handling
-try {
-  initEmailService();
-  console.log('✅ Email service initialized');
-} catch (err) {
-  console.error('⚠️ Email configuration is invalid:', err.message);
-}
-
-// Global error handling middleware
+// Error handling middleware
 app.use(errorHandler);
 
 // Start server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`✅ Server running on port ${PORT}`);
+  console.log(`Available at your primary URL ${process.env.BACKEND_URL || 'http://localhost:' + PORT}`);
+});
