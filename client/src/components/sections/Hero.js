@@ -6,6 +6,7 @@ import './Hero.css';
 const Hero = () => {
   const [scrollY, setScrollY] = useState(0);
   const heroRef = useRef(null);
+  const videoRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,6 +15,13 @@ const Hero = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Optional: Handle video loading and playback
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.8; // Slow down video slightly for dramatic effect
+    }
   }, []);
 
   const handleButtonClick = (e, targetId) => {
@@ -54,13 +62,29 @@ const Hero = () => {
   return (
     <section id="home" className="hero" ref={heroRef}>
       <div className="hero-background">
-        <div 
-          className="hero-image" 
+        {/* Replace the background image with video */}
+        <video
+          ref={videoRef}
+          className="hero-video"
+          autoPlay
+          muted
+          loop
+          playsInline
           style={{
-            backgroundImage: `url(https://pplx-res.cloudinary.com/image/upload/v1758736290/pplx_project_search_images/926b71a4426a303f1fe650d039a11dbf7b8a01cd.png)`,
             transform: `scale(1.1) translateY(${scrollY * 0.5}px)`
           }}
-        ></div>
+        >
+          <source 
+            src="https://videocdn.cdnpk.net/videos/a123359a-216a-5bf8-9adb-f4b87fdaa197/horizontal/previews/clear/large.mp4?token=exp=1759655924~hmac=696ba89d9fb5700808ff0f659e4b67f6d008d156b7aa6ba09fc96a340d2d18cd" 
+            type="video/mp4" 
+          />
+          {/* Fallback image in case video doesn't load */}
+          <img 
+            src="https://pplx-res.cloudinary.com/image/upload/v1758736290/pplx_project_search_images/926b71a4426a303f1fe650d039a11dbf7b8a01cd.png" 
+            alt="Hero background" 
+          />
+        </video>
+        
         <div className="hero-overlay"></div>
         
         {/* Morphing shapes for visual effect */}

@@ -6,6 +6,8 @@ import Services from '../components/sections/Services';
 import Reviews from '../components/sections/Reviews';
 import Gallery from '../components/sections/Gallery';
 import Contact from '../components/sections/Contact';
+import ContactFloatingButtons from '../components/ui/ContactFloatingButtons';
+
 
 const Home = () => {
   return (
@@ -17,6 +19,7 @@ const Home = () => {
       <Reviews />
       <Gallery />
       <Contact />
+      <ContactFloatingButtons />
     </>
   );
 };
