@@ -197,3 +197,95 @@
   color: var(--text-secondary);
   font-size: 1.1rem;
 }
+/* Add these to your existing Gallery.css */
+
+.gallery-header .section-subtitle {
+  color: var(--silver-metal);
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.gallery-category {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--vibrant-orange);
+  margin-top: 0.25rem;
+  text-transform: capitalize;
+}
+
+.lightbox-info {
+  padding: 1.5rem;
+  background: rgba(15, 15, 15, 0.95);
+  border-top: 1px solid var(--silver-metal);
+}
+
+.lightbox-info h3 {
+  color: var(--pearl-white);
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.lightbox-category {
+  color: var(--vibrant-orange);
+  text-transform: capitalize;
+  font-size: 0.9rem;
+}
+
+.error-message {
+  text-align: center;
+  padding: 3rem;
+  background: rgba(244, 67, 54, 0.1);
+  border: 1px solid rgba(244, 67, 54, 0.3);
+  border-radius: 10px;
+  margin: 2rem 0;
+}
+
+.error-message p {
+  color: #f44336;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.no-gallery-items {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  margin: 2rem 0;
+}
+
+.no-gallery-items p {
+  color: var(--silver-metal);
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 2px solid var(--silver-metal);
+  color: var(--silver-metal);
+}
+
+.btn-secondary:hover {
+  background: var(--silver-metal);
+  color: var(--primary-black);
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .lightbox-info {
+    padding: 1rem;
+  }
+  
+  .lightbox-info h3 {
+    font-size: 1.1rem;
+  }
+  
+  .gallery-header .section-subtitle {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+}
