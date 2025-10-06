@@ -14,58 +14,58 @@ const Gallery = () => {
   const [isVisible, setIsVisible] = useState(false);
   const galleryRef = useRef(null);
 
-  useEffect(() => {
-    const fetchGallery = async () => {
-      try {
-        setIsLoading(true);
-        const data = await getGallery();
-        
-        // Handle different response structures
-        let items = [];
-        if (Array.isArray(data)) {
-          items = data;
-        } else if (data && Array.isArray(data.data)) {
-          items = data.data;
-        } else if (data && Array.isArray(data.gallery)) {
-          items = data.gallery;
-        } else if (data && Array.isArray(data.items)) {
-          items = data.items;
-        }
+  const fetchGalleryData = async () => {
+    try {
+      setIsLoading(true);
+      setError(null);
+      const data = await getGallery();
+      
+      // Handle different response structures
+      let items = [];
+      if (Array.isArray(data)) {
+        items = data;
+      } else if (data && Array.isArray(data.data)) {
+        items = data.data;
+      } else if (data && Array.isArray(data.gallery)) {
+        items = data.gallery;
+      } else if (data && Array.isArray(data.items)) {
+        items = data.items;
+      }
 
-        // Validate items and ensure they have required properties
-        const validItems = items.filter(item => 
-          item && 
-          item.image && 
-          typeof item.image === 'string' && 
-          item.image.trim() !== ''
-        ).map(item => ({
-          _id: item._id || Math.random().toString(36).substr(2, 9),
-          title: item.title || 'Gallery Image',
-          image: item.image,
-          category: item.category || 'all',
-          featured: item.featured || false
-        }));
+      // Validate items and ensure they have required properties
+      const validItems = items.filter(item => 
+        item && 
+        item.image && 
+        typeof item.image === 'string' && 
+        item.image.trim() !== ''
+      ).map(item => ({
+        _id: item._id || Math.random().toString(36).substr(2, 9),
+        title: item.title || 'Gallery Image',
+        image: item.image,
+        category: item.category || 'all',
+        featured: item.featured || false
+      }));
 
-        if (validItems.length > 0) {
-          setGalleryItems(validItems);
-          setFilteredItems(validItems);
-          setError(null);
-        } else {
-          setError('No gallery items available');
-          setGalleryItems([]);
-          setFilteredItems([]);
-        }
-      } catch (error) {
-        console.error('Error fetching gallery:', error);
-        setError('Failed to load gallery. Please try again later.');
+      if (validItems.length > 0) {
+        setGalleryItems(validItems);
+        setFilteredItems(validItems);
+      } else {
+        setError('No gallery items available');
         setGalleryItems([]);
         setFilteredItems([]);
-      } finally {
-        setIsLoading(false);
       }
-    };
+    } catch (error) {
+      console.error('Error fetching gallery:', error);
+      setError('Failed to load gallery. Please try again later.');
+      setGalleryItems([]);
+      setFilteredItems([]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
-    fetchGallery();
+  useEffect(() => {
+    fetchGalleryData();
   }, []);
 
   useEffect(() => {
@@ -110,48 +110,7 @@ const Gallery = () => {
   };
 
   const retryFetch = () => {
-    setError(null);
-    setIsLoading(true);
-    // Retry the fetch
-    useEffect(() => {
-      const fetchGallery = async () => {
-        try {
-          const data = await getGallery();
-          // ... same fetch logic as above
-          let items = [];
-          if (Array.isArray(data)) {
-            items = data;
-          } else if (data && Array.isArray(data.data)) {
-            items = data.data;
-          }
-
-          const validItems = items.filter(item => 
-            item && item.image && typeof item.image === 'string'
-          ).map(item => ({
-            _id: item._id || Math.random().toString(36).substr(2, 9),
-            title: item.title || 'Gallery Image',
-            image: item.image,
-            category: item.category || 'all',
-            featured: item.featured || false
-          }));
-
-          if (validItems.length > 0) {
-            setGalleryItems(validItems);
-            setFilteredItems(validItems);
-            setError(null);
-          } else {
-            setError('No gallery items available');
-          }
-        } catch (error) {
-          console.error('Error fetching gallery:', error);
-          setError('Failed to load gallery. Please try again later.');
-        } finally {
-          setIsLoading(false);
-        }
-      };
-
-      fetchGallery();
-    }, []);
+    fetchGalleryData();
   };
 
   const containerVariants = {
