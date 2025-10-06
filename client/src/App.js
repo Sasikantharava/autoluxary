@@ -16,11 +16,11 @@ import { initMorphingShapes } from './animations/morphingShapes';
 function App() {
   useEffect(() => {
     // Initialize all animations
-    // initScrollAnimations();
-    // initParallaxEffects();
-    // initFloatingAnimations();
-    // initGradientAnimations();
-    // initMorphingShapes();
+    initScrollAnimations();
+    initParallaxEffects();
+    initFloatingAnimations();
+    initGradientAnimations();
+    initMorphingShapes();
   }, []);
 
   return (
