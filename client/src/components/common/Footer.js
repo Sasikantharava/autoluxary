@@ -171,7 +171,7 @@ const Footer = () => {
         <div className="footer-bottom">
           <div className="footer-bottom-content">
             <div className="footer-copyright">
-              <p>&copy; {currentYear} LUXEGOAUTOSPA. All rights reserved.</p>
+              <p>&copy; {currentYear} Luxury Automotive Excellence. All rights reserved.</p>
             </div>
             <div className="footer-legal">
               {quickLinks.map((link, index) => (

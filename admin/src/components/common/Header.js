@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <header className="admin-header">
       <div className="header-container">
-  <h1 className="header-title">LUXEGOAUTOSPA Admin</h1>
+        <h1 className="header-title">Luxury Auto Admin</h1>
         <div className="header-user">
           <span className="user-name">{user?.name}</span>
           <button className="logout-btn" onClick={logout}>
