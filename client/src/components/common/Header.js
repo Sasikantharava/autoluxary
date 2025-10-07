@@ -64,7 +64,7 @@ const Header = () => {
     <header className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="nav-container">
         <div className="nav-logo">
-          <Link to="/" className="logo-text">LUXURY AUTO</Link>
+          <Link to="/" className="logo-text">LUXEGOAUTOSPA</Link>
         </div>
         <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`} ref={menuRef}>
           <li>

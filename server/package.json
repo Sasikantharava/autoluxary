@@ -1,7 +1,7 @@
 {
   "name": "luxury-auto-server",
   "version": "1.0.0",
-  "description": "Backend for Luxury Auto Detailing",
+  "description": "Backend for LUXEGOAUTOSPA Detailing",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

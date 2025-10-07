@@ -60,11 +60,11 @@ const Footer = () => {
         <div className="footer-content">
           <div className="footer-section">
             <div className="footer-logo">
-              <span className="logo-text">LUXURY AUTO</span>
+              <span className="logo-text">LUXEGOAUTOSPA</span>
               <p className="footer-tagline">Admin Panel</p>
             </div>
             <p className="footer-description">
-              Comprehensive management system for luxury automotive detailing services, bookings, reviews, and gallery management.
+              Comprehensive management system for LUXEGOAUTOSPA detailing services, bookings, reviews, and gallery management.
             </p>
             <div className="social-links">
               <h4>Connect</h4>
@@ -125,7 +125,7 @@ const Footer = () => {
         <div className="footer-bottom">
           <div className="footer-bottom-content">
             <div className="footer-copyright">
-              <p>&copy; {currentYear} Luxury Auto Admin Panel. All rights reserved.</p>
+              <p>&copy; {currentYear} LUXEGOAUTOSPA Admin Panel. All rights reserved.</p>
             </div>
             <div className="footer-legal">
               {quickLinks.map((link, index) => (

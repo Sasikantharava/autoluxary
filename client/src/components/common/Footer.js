@@ -95,7 +95,7 @@ const Footer = () => {
         <div className="footer-content">
           <div className="footer-section">
             <div className="footer-logo">
-              <span className="logo-text">LUXURY AUTO</span>
+              <span className="logo-text">LUXEGOAUTOSPA</span>
               <p className="footer-tagline">Where Performance Meets Perfection</p>
             </div>
             <p className="footer-description">
@@ -171,7 +171,7 @@ const Footer = () => {
         <div className="footer-bottom">
           <div className="footer-bottom-content">
             <div className="footer-copyright">
-              <p>&copy; {currentYear} Luxury Automotive Excellence. All rights reserved.</p>
+              <p>&copy; {currentYear} LUXEGOAUTOSPA. All rights reserved.</p>
             </div>
             <div className="footer-legal">
               {quickLinks.map((link, index) => (

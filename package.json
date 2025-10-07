@@ -1,7 +1,7 @@
 {
   "name": "luxury-auto-detailing",
   "version": "1.0.0",
-  "description": "Luxury Auto Detailing MERN Stack Application",
+  "description": "LUXEGOAUTOSPA Detailing MERN Stack Application",
   "scripts": {
     "dev": "concurrently \"npm run server\" \"npm run client\" \"npm run admin\"",
     "server": "cd server && npm run dev",

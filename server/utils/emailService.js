@@ -73,13 +73,13 @@ const sendConfirmationEmail = async (options) => {
 
   try {
     const mailOptions = {
-      from: `${process.env.FROM_NAME || 'Luxury Auto Detailing'} <${process.env.EMAIL_USER}>`,
+  from: `${process.env.FROM_NAME || 'LUXEGOAUTOSPA'} <${process.env.EMAIL_USER}>`,
       to: options.email,
-      subject: 'Booking Confirmation - Luxury Auto Detailing',
+  subject: 'Booking Confirmation - LUXEGOAUTOSPA',
       html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f5f5f5;">
         <div style="text-align: center; padding-bottom: 20px;">
-          <h1 style="color: #FF6B35; margin: 0;">Luxury Auto Detailing</h1>
+      <h1 style="color: #FF6B35; margin: 0;">LUXEGOAUTOSPA</h1>
           <p style="margin: 5px 0 0 0; color: #555;">Your booking is confirmed!</p>
         </div>
 
@@ -149,13 +149,13 @@ const sendAdminNotificationEmail = async (booking) => {
 
   try {
     const mailOptions = {
-      from: `${process.env.FROM_NAME || 'Luxury Auto Detailing'} <${process.env.EMAIL_USER}>`,
+  from: `${process.env.FROM_NAME || 'LUXEGOAUTOSPA'} <${process.env.EMAIL_USER}>`,
       to: process.env.ADMIN_EMAIL || process.env.EMAIL_USER,
-      subject: 'New Booking Request - Luxury Auto Detailing',
+  subject: 'New Booking Request - LUXEGOAUTOSPA',
       html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f5f5f5;">
         <div style="text-align: center; padding-bottom: 20px;">
-          <h1 style="color: #FF6B35; margin: 0;">Luxury Auto Detailing</h1>
+      <h1 style="color: #FF6B35; margin: 0;">LUXEGOAUTOSPA</h1>
           <p style="margin: 5px 0 0 0; color: #555;">New booking received!</p>
         </div>
 
