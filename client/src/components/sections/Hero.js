@@ -75,7 +75,7 @@ const Hero = () => {
           }}
         >
           <source 
-            src="https://videocdn.cdnpk.net/videos/a123359a-216a-5bf8-9adb-f4b87fdaa197/horizontal/previews/clear/large.mp4?token=exp=1759655924~hmac=696ba89d9fb5700808ff0f659e4b67f6d008d156b7aa6ba09fc96a340d2d18cd" 
+            src="https://cdn.pixabay.com/video/2023/02/25/152184-802335622_large.mp4"
             type="video/mp4" 
           />
           {/* Fallback image in case video doesn't load */}
