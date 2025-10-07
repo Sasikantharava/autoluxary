@@ -100,13 +100,18 @@ exports.deleteGalleryItem = async (req, res, next) => {
       });
     }
 
-    await galleryItem.remove();
+    // ✅ Modern Mongoose deletion
+    await galleryItem.deleteOne();
 
     res.status(200).json({
       success: true,
-      data: {},
+      message: 'Gallery item deleted successfully',
     });
   } catch (error) {
-    next(error);
+    console.error('Error deleting gallery item:', error);
+    res.status(500).json({
+      success: false,
+      error: error.message,
+    });
   }
 };
