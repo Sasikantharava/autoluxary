@@ -75,7 +75,7 @@ const Hero = () => {
           }}
         >
           <source 
-            src="https://cdn.pixabay.com/video/2023/02/25/152184-802335622_large.mp4"
+            src="https://cdn.pixabay.com/video/2023/09/21/181533-866999835_large.mp4"
             type="video/mp4" 
           />
           {/* Fallback image in case video doesn't load */}
