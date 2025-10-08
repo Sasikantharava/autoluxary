@@ -5,7 +5,9 @@ import './About.css';
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [videoError, setVideoError] = useState(false);
   const aboutRef = useRef(null);
+  const videoRef = useRef(null);
   
   // Counter animations
   const yearsCount = useCountUp(15, isVisible);
@@ -18,6 +20,12 @@ const About = () => {
         if (entry.isIntersecting) {
           console.log('About section is visible');
           setIsVisible(true);
+          // Try to play video when section becomes visible
+          if (videoRef.current) {
+            videoRef.current.play().catch(error => {
+              console.log('Video autoplay failed:', error);
+            });
+          }
         }
       },
       { threshold: 0.1 }
@@ -33,6 +41,16 @@ const About = () => {
       }
     };
   }, []);
+
+  const handleVideoError = () => {
+    console.error('Video failed to load');
+    setVideoError(true);
+  };
+
+  const handleVideoLoad = () => {
+    console.log('Video loaded successfully');
+    setVideoError(false);
+  };
 
   // Debug: Log counter values
   useEffect(() => {
@@ -98,12 +116,35 @@ const About = () => {
               </div>
             </div>
           </motion.div>
-          <motion.div className="about-image" variants={itemVariants}>
-            <img 
-              src="https://pplx-res.cloudinary.com/image/upload/v1756418015/pplx_project_search_images/6e978c2a56fe660d607267ef9d40e047b4b7d698.png" 
-              alt="Luxury Car Interior" 
-              className="about-img"
-            />
+          <motion.div className="about-video" variants={itemVariants}>
+            {videoError ? (
+              <div className="video-fallback">
+                <img 
+                  src="https://pplx-res.cloudinary.com/image/upload/v1756418015/pplx_project_search_images/6e978c2a56fe660d607267ef9d40e047b4b7d698.png" 
+                  alt="Luxury Car Interior" 
+                  className="about-img"
+                />
+              </div>
+            ) : (
+              <video
+                ref={videoRef}
+                className="about-video-element"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                onError={handleVideoError}
+                onLoadedData={handleVideoLoad}
+                controls={false} // Set to true if you want user controls
+              >
+                <source 
+                  src="https://cdn.pixabay.com/video/2016/01/31/2030-153703078_large.mp4" 
+                  type="video/mp4" 
+                />
+                Your browser does not support the video tag.
+              </video>
+            )}
           </motion.div>
         </motion.div>
       </div>

@@ -2,19 +2,37 @@ import React from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import './Header.css';
 
-const Header = () => {
-  const { user, logout } = useAuth();
+const Header = ({ onMenuToggle }) => {
+  const { logout, user } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+  };
 
   return (
     <header className="admin-header">
-      <div className="header-container">
-        <h1 className="header-title">Luxury Auto Admin</h1>
-        <div className="header-user">
-          <span className="user-name">{user?.name}</span>
-          <button className="logout-btn" onClick={logout}>
-            Logout
-          </button>
+      <div className="header-left">
+        <button 
+          className="mobile-menu-btn"
+          onClick={onMenuToggle}
+          aria-label="Toggle menu"
+        >
+          ☰
+        </button>
+        <h1>Admin Dashboard</h1>
+      </div>
+      <div className="header-right">
+        <div className="user-info">
+          <span className="user-name">Welcome, {user?.name || 'Admin'}</span>
         </div>
+        <button 
+          className="logout-btn"
+          onClick={handleLogout}
+          aria-label="Logout"
+        >
+          <span className="logout-icon">🚪</span>
+          <span className="logout-text">Logout</span>
+        </button>
       </div>
     </header>
   );

@@ -10,12 +10,14 @@ const Dashboard = () => {
     totalBookings: 0,
     pendingBookings: 0,
     totalReviews: 0,
-    pendingReviews: 0
+    pendingReviews: 0,
+    revenue: 0,
+    conversionRate: 0
   });
   const [recentBookings, setRecentBookings] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [refreshKey, setRefreshKey] = useState(0); // Key to force refresh
+  const [refreshKey, setRefreshKey] = useState(0);
 
   useEffect(() => {
     const fetchDashboardData = async () => {
@@ -31,7 +33,7 @@ const Dashboard = () => {
         const bookingsArray = Array.isArray(bookingsData) ? bookingsData : [];
         
         // Fetch reviews data
-        const reviewsData = await getReviews(true); // Get all reviews including unapproved
+        const reviewsData = await getReviews(true);
         console.log('Reviews data:', reviewsData);
         
         // Ensure reviewsData is an array
@@ -40,12 +42,16 @@ const Dashboard = () => {
         // Calculate stats
         const pendingBookings = bookingsArray.filter(booking => booking.status === 'pending').length;
         const pendingReviews = reviewsArray.filter(review => !review.approved).length;
+        const revenue = bookingsArray.reduce((total, booking) => total + (booking.totalPrice || 0), 0);
+        const conversionRate = bookingsArray.length > 0 ? Math.round((bookingsArray.filter(b => b.status === 'confirmed').length / bookingsArray.length) * 100) : 0;
         
         setStats({
           totalBookings: bookingsArray.length,
           pendingBookings,
           totalReviews: reviewsArray.length,
-          pendingReviews
+          pendingReviews,
+          revenue,
+          conversionRate
         });
         
         // Get the 5 most recent bookings
@@ -57,34 +63,35 @@ const Dashboard = () => {
         setIsLoading(false);
       } catch (error) {
         console.error('Error fetching dashboard data:', error);
-        setError('Failed to load dashboard data');
+        setError('Failed to load dashboard data. Please try again.');
         setIsLoading(false);
       }
     };
 
     fetchDashboardData();
-  }, [refreshKey]); // Add refreshKey as dependency
+  }, [refreshKey]);
 
-  // Function to manually refresh data
   const refreshData = () => {
     setRefreshKey(prev => prev + 1);
   };
 
   if (isLoading) {
     return (
-      <div className="loading">
-        <div className="spinner"></div>
-        <p>Loading dashboard...</p>
+      <div className="dashboard-loading">
+        <div className="loading-spinner large"></div>
+        <p>Loading dashboard data...</p>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="error-container">
+      <div className="dashboard-error">
+        <div className="error-icon">⚠️</div>
+        <h3>Unable to Load Dashboard</h3>
         <p>{error}</p>
         <button onClick={refreshData} className="btn btn-primary">
-          Try Again
+          Retry
         </button>
       </div>
     );
@@ -92,18 +99,29 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
+      {/* Header Section */}
       <div className="dashboard-header">
-        <h1>Dashboard</h1>
-        <button onClick={refreshData} className="btn btn-secondary refresh-btn">
-          Refresh Data
-        </button>
+        <div className="header-content">
+          <h1>Dashboard Overview</h1>
+          <p className="header-subtitle">Welcome back! Here's what's happening today.</p>
+        </div>
+        <div className="header-actions">
+          <button onClick={refreshData} className="btn btn-gradient refresh-btn">
+            <span className="btn-icon">🔄</span>
+            Refresh Data
+          </button>
+        </div>
       </div>
-      
+
+      {/* Stats Grid */}
       <Stats stats={stats} />
-      
-      <div className="dashboard-sections">
-        <div className="dashboard-section">
-          <RecentBookings bookings={recentBookings} onRefresh={refreshData} />
+
+      {/* Main Content Grid */}
+      <div className="dashboard-content">
+        <div className="content-main">
+          <div className="content-section gradient-card">
+            <RecentBookings bookings={recentBookings} onRefresh={refreshData} />
+          </div>
         </div>
       </div>
     </div>

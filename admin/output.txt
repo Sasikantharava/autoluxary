@@ -1,0 +1,9 @@
+C:\Users\SASI KANTH\OneDrive\Desktop\shocase1\luxury-auto-detailing\admin
+├── node_modules
+├── package-lock.json
+├── package.json
+├── public
+└── src
+
+directory: 3 file: 2
+
