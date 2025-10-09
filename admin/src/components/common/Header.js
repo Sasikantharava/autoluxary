@@ -19,7 +19,12 @@ const Header = ({ onMenuToggle }) => {
         >
           ☰
         </button>
-        <h1>Admin Dashboard</h1>
+        {/* ✅ Added Logo with Text */}
+        <div className="admin-logo">
+          <img src="/logo.png" alt="LuxeGoAutoSpa Logo" className="admin-logo-img" />
+      
+        </div>
+        <h1 className="admin-title">Admin Dashboard</h1>
       </div>
       <div className="header-right">
         <div className="user-info">
