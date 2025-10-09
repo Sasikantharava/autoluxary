@@ -22,7 +22,7 @@ const Footer = () => {
     },
     {
       name: 'Instagram',
-      url: 'https://www.instagram.com/luxuryautodetailing',
+      url: 'https://www.instagram.com/luxego_autospa?igsh=MXhqbzIyejllMnYxMA==',
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -36,8 +36,8 @@ const Footer = () => {
       ),
     },
     {
-      name: 'Twitter',
-      url: 'https://twitter.com/luxuryautodetail',
+      name: 'TikTok',
+      url: 'https://www.tiktok.com/@luxego.auto.spa',
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -46,28 +46,13 @@ const Footer = () => {
           fill="currentColor"
           viewBox="0 0 24 24"
         >
-          <path d="M23.954 4.569a10 10 0 01-2.825.775A4.932 4.932 0 0023.337 3a9.864 9.864 0 01-3.127 1.184A4.924 4.924 0 0016.616 3c-2.717 0-4.924 2.208-4.924 4.924 0 .386.045.762.127 1.124C7.728 8.84 4.1 6.84 1.671 3.149a4.822 4.822 0 00-.666 2.475c0 1.708.87 3.213 2.188 4.096a4.904 4.904 0 01-2.229-.616v.06c0 2.386 1.697 4.374 3.946 4.828a4.936 4.936 0 01-2.224.084c.623 1.945 2.444 3.362 4.6 3.404A9.868 9.868 0 010 19.54a13.94 13.94 0 007.548 2.212c9.055 0 14.009-7.506 14.009-14.009 0-.213-.005-.425-.014-.636A9.936 9.936 0 0024 4.59z" />
-        </svg>
-      ),
-    },
-    {
-      name: 'LinkedIn',
-      url: 'https://www.linkedin.com/company/luxury-auto-detailing',
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          fill="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path d="M4.98 3A2.5 2.5 0 002.5 5.5 2.5 2.5 0 004.98 8 2.5 2.5 0 007.46 5.5 2.5 2.5 0 004.98 3zM2.5 21.5h5V9.5h-5v12zm7.982-12h4.732v1.563h.066c.66-1.253 2.273-2.563 4.682-2.563 5.008 0 5.938 3.293 5.938 7.563v6.937h-5V15.75c0-1.375-.027-3.144-1.914-3.144-1.915 0-2.209 1.496-2.209 3.04v5.854h-5v-12z" />
+          <path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.445v13.672a2.896 2.896 0 0 1-5.201 1.743l-.002-.001.002.001a2.895 2.895 0 0 1 3.183-4.51v-3.5a6.329 6.329 0 0 0-5.394 10.692 6.33 6.33 0 0 0 10.857-4.424V8.687a8.182 8.182 0 0 0 4.773 1.526V6.79a4.831 4.831 0 0 1-1.003-.104z"/>
         </svg>
       ),
     },
     {
       name: 'YouTube',
-      url: 'https://www.youtube.com/channel/UCyourchannel',
+      url: 'https://www.youtube.com/@luxegoautospa',
       icon: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -81,7 +66,6 @@ const Footer = () => {
       ),
     },
   ];
-
 
   const quickLinks = [
     { name: 'Privacy Policy', url: '/privacy' },
@@ -148,16 +132,16 @@ const Footer = () => {
             <div className="contact-info">
               <p>
                 <i className="fas fa-map-marker-alt"></i>
-                123 Premium Auto Drive<br />
-                Luxury District, CA 90210
+                LuxeGoAutoSpa<br />
+                Essex
               </p>
               <p>
                 <i className="fas fa-phone"></i>
-                +44 7776 648820
+                07721482404
               </p>
               <p>
                 <i className="fas fa-envelope"></i>
-                luxegoautospa@gmail.com
+                info@luxegoautospa.com
               </p>
               <p>
                 <i className="fas fa-clock"></i>

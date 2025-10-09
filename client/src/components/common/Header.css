@@ -8,6 +8,7 @@
   backdrop-filter: blur(20px);
   z-index: 1000;
   transition: var(--transition-smooth);
+  height: 70px;
 }
 
 .navbar.scrolled {
@@ -19,26 +20,57 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 0 2rem;
   max-width: 1400px;
   margin: 0 auto;
+  height: 70px;
 }
 
+/* Logo Section - Dynamic Sizing */
+.nav-logo {
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  gap: 12px;
+  transition: var(--transition-smooth);
+}
+
+/* Logo Image - INCREASED SIZE */
+.logo-img {
+  height: 70px; /* Increased from 60px */
+  width: auto;
+  object-fit: contain;
+  transition: all 0.3s ease;
+}
+
+/* Logo Text - REDUCED SIZE */
 .logo-text {
   font-family: 'Oswald', sans-serif;
-  font-size: 1.8rem;
-  font-weight: 700;
+  font-size: 1.8rem; /* Reduced from 100px */
+  font-weight: 300; /* Slightly lighter weight */
   color: var(--vibrant-orange);
-  letter-spacing: 3px;
+  letter-spacing: 1.5px;
   text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.3s ease;
 }
 
+/* Navigation Menu */
 .nav-menu {
   display: flex;
   list-style: none;
   gap: 2rem;
   margin: 0;
   padding: 0;
+  align-items: center;
+  height: 100%;
 }
 
 .nav-link {
@@ -71,11 +103,17 @@
   width: 100%;
 }
 
+/* Hamburger Menu */
 .nav-toggle {
   display: none;
   flex-direction: column;
   cursor: pointer;
   gap: 4px;
+  z-index: 1001;
+  padding: 5px;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
 .nav-toggle span {
@@ -83,34 +121,92 @@
   height: 3px;
   background: var(--pearl-white);
   transition: var(--transition-smooth);
+  transform-origin: center;
 }
 
 .nav-toggle span.active:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
+  transform: rotate(45deg) translate(6px, 6px);
 }
 
 .nav-toggle span.active:nth-child(2) {
   opacity: 0;
+  transform: translateX(-10px);
 }
 
 .nav-toggle span.active:nth-child(3) {
-  transform: rotate(-45deg) translate(7px, -6px);
+  transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* Responsive Design */
+/* Responsive Design - Updated for new sizes */
+@media (max-width: 1200px) {
+  .logo-img {
+    height: 60px; /* Increased */
+  }
+  .logo-text {
+    font-size: 1.5rem; /* Reduced */
+  }
+}
+
+@media (max-width: 1024px) {
+  .logo-img {
+    height: 55px; /* Increased */
+  }
+  .logo-text {
+    font-size: 1.3rem; /* Reduced */
+    letter-spacing: 1.5px;
+  }
+  .logo-link {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 900px) {
+  .logo-img {
+    height: 50px; /* Increased */
+  }
+  .logo-text {
+    font-size: 1.2rem; /* Reduced */
+  }
+}
+
 @media (max-width: 768px) {
+  .navbar {
+    height: 60px;
+  }
+  
+  .nav-container {
+    padding: 0 1.5rem;
+    height: 60px;
+  }
+
+  /* Logo adjustments for mobile */
+  .logo-img {
+    height: 45px; /* Increased */
+  }
+  .logo-text {
+    font-size: 1.1rem; /* Reduced */
+    letter-spacing: 1.2px;
+  }
+  .logo-link {
+    gap: 8px;
+  }
+
+  /* Mobile menu */
   .nav-menu {
     position: fixed;
-    top: 70px;
+    top: 60px;
     left: -100%;
     width: 100%;
-    height: calc(100vh - 70px);
+    height: calc(100vh - 60px);
     background: rgba(15, 15, 15, 0.98);
+    backdrop-filter: blur(20px);
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    transition: left 0.3s ease;
-    gap: 3rem;
+    transition: left 0.4s ease-in-out;
+    gap: 2rem;
+    padding: 2rem;
+    padding-top: 3rem;
   }
   
   .nav-menu.active {
@@ -119,5 +215,142 @@
   
   .nav-toggle {
     display: flex;
+  }
+
+  .nav-link {
+    font-size: 1.1rem;
+    padding: 0.5rem 0;
+  }
+}
+
+@media (max-width: 650px) {
+  .logo-img {
+    height: 40px; /* Increased */
+  }
+  .logo-text {
+    font-size: 1rem; /* Reduced */
+    letter-spacing: 1px;
+  }
+}
+
+@media (max-width: 550px) {
+  .logo-img {
+    height: 38px; /* Increased */
+  }
+  .logo-text {
+    font-size: 0.9rem; /* Reduced */
+  }
+  .logo-link {
+    gap: 6px;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .navbar {
+    height: 60px;
+  }
+  
+  .nav-container {
+    padding: 0 1rem;
+    height: 60px;
+  }
+
+  /* Smaller logo for very small screens */
+  .logo-img {
+    height: 35px; /* Increased */
+  }
+  .logo-text {
+    font-size: 0.85rem; /* Reduced */
+    letter-spacing: 0.8px;
+  }
+
+  /* Hide text on very small screens if needed */
+  @media (max-width: 380px) {
+    .logo-text {
+      display: none; /* Hide text on very small screens */
+    }
+    
+    .logo-link {
+      gap: 0;
+    }
+  }
+
+  .nav-menu {
+    gap: 2rem;
+  }
+
+  .nav-link {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .logo-img {
+    height: 32px; /* Increased */
+  }
+}
+
+/* Large screens - Scale up */
+@media (min-width: 1400px) {
+  .logo-img {
+    height: 75px; /* Increased */
+  }
+  .logo-text {
+    font-size: 1.6rem; /* Reduced */
+  }
+}
+
+@media (min-width: 1600px) {
+  .logo-img {
+    height: 80px; /* Increased */
+  }
+  .logo-text {
+    font-size: 1.7rem; /* Reduced */
+  }
+}
+
+@media (min-width: 1920px) {
+  .logo-img {
+    height: 85px; /* Increased */
+  }
+  .logo-text {
+    font-size: 1.8rem; /* Reduced */
+  }
+}
+
+/* Hover effects */
+.logo-link:hover .logo-img {
+  transform: scale(1.05);
+}
+
+.logo-link:hover .logo-text {
+  color: #ff8c42; /* Lighter orange on hover */
+  transform: scale(1.02);
+}
+
+/* Smooth transitions for all logo elements */
+.logo-link,
+.logo-img,
+.logo-text {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Scrolled state adjustments */
+.navbar.scrolled .logo-img {
+  height: 50px; /* Increased */
+}
+
+.navbar.scrolled .logo-text {
+  font-size: 1.2rem; /* Reduced */
+}
+
+@media (max-width: 768px) {
+  .navbar.scrolled .logo-img {
+    height: 38px; /* Increased */
+  }
+  
+  .navbar.scrolled .logo-text {
+    font-size: 1rem; /* Reduced */
   }
 }

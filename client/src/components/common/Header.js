@@ -43,8 +43,7 @@ const Header = () => {
   const handleNavClick = (e, targetId) => {
     e.preventDefault();
     closeMenu();
-    
-    // If we're on the home page, scroll to the section
+
     if (location.pathname === '/') {
       const element = document.getElementById(targetId);
       if (element) {
@@ -55,7 +54,6 @@ const Header = () => {
         });
       }
     } else {
-      // If we're not on the home page, navigate to home and then scroll
       window.location.href = `/#${targetId}`;
     }
   };
@@ -63,74 +61,24 @@ const Header = () => {
   return (
     <header className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="nav-container">
+        {/* ✅ LOGO + TEXT SIDE BY SIDE */}
         <div className="nav-logo">
-          <Link to="/" className="logo-text">LUXEGOAUTOSPA</Link>
+          <Link to="/" className="logo-link">
+            <img src="/logo.png" alt="LuxeGoAutoSpa Logo" className="logo-img" />
+            <span className="logo-text">LUXEGOAUTOSPA</span>
+          </Link>
         </div>
+
         <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`} ref={menuRef}>
-          <li>
-            <a 
-              href="#home" 
-              className="nav-link" 
-              onClick={(e) => handleNavClick(e, 'home')}
-            >
-              Home
-            </a>
-          </li>
-          <li>
-            <a 
-              href="#about" 
-              className="nav-link" 
-              onClick={(e) => handleNavClick(e, 'about')}
-            >
-              About
-            </a>
-          </li>
-          <li>
-            <a 
-              href="#showcase" 
-              className="nav-link" 
-              onClick={(e) => handleNavClick(e, 'showcase')}
-            >
-              Showcase
-            </a>
-          </li>
-          <li>
-            <a 
-              href="#services" 
-              className="nav-link" 
-              onClick={(e) => handleNavClick(e, 'services')}
-            >
-              Services
-            </a>
-          </li>
-          <li>
-            <a 
-              href="#reviews" 
-              className="nav-link" 
-              onClick={(e) => handleNavClick(e, 'reviews')}
-            >
-              Reviews
-            </a>
-          </li>
-          <li>
-            <a 
-              href="#gallery" 
-              className="nav-link" 
-              onClick={(e) => handleNavClick(e, 'gallery')}
-            >
-              Gallery
-            </a>
-          </li>
-          <li>
-            <a 
-              href="#contact" 
-              className="nav-link" 
-              onClick={(e) => handleNavClick(e, 'contact')}
-            >
-              Contact
-            </a>
-          </li>
+          <li><a href="#home" className="nav-link" onClick={(e) => handleNavClick(e, 'home')}>Home</a></li>
+          <li><a href="#about" className="nav-link" onClick={(e) => handleNavClick(e, 'about')}>About</a></li>
+          <li><a href="#showcase" className="nav-link" onClick={(e) => handleNavClick(e, 'showcase')}>Showcase</a></li>
+          <li><a href="#services" className="nav-link" onClick={(e) => handleNavClick(e, 'services')}>Services</a></li>
+          <li><a href="#reviews" className="nav-link" onClick={(e) => handleNavClick(e, 'reviews')}>Reviews</a></li>
+          <li><a href="#gallery" className="nav-link" onClick={(e) => handleNavClick(e, 'gallery')}>Gallery</a></li>
+          <li><a href="#contact" className="nav-link" onClick={(e) => handleNavClick(e, 'contact')}>Contact</a></li>
         </ul>
+
         <div className="nav-toggle" onClick={toggleMenu}>
           <span className={isMenuOpen ? 'active' : ''}></span>
           <span className={isMenuOpen ? 'active' : ''}></span>

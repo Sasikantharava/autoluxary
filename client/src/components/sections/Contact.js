@@ -197,15 +197,15 @@ const Contact = () => {
           <motion.div className="contact-info" variants={itemVariants}>
             <div className="info-item">
               <h4>Address</h4>
-              <p>123 Premium Auto Drive<br />Luxury District</p>
+              <p>LuxeGoAutoSpa<br />Essex</p>
             </div>
             <div className="info-item">
               <h4>Phone</h4>
-              <p>+44 7776 648820</p>
+              <p>07721482404</p>
             </div>
             <div className="info-item">
               <h4>Email</h4>
-              <p>luxegoautospa@gmail.com</p>
+              <p>info@luxegoautospa.com</p>
             </div>
             <div className="info-item">
               <h4>Hours</h4>
