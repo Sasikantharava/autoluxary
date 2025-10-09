@@ -201,11 +201,11 @@ const Contact = () => {
             </div>
             <div className="info-item">
               <h4>Phone</h4>
-              <p>+1 (555) 123-4567</p>
+              <p>+44 7776 648820</p>
             </div>
             <div className="info-item">
               <h4>Email</h4>
-              <p>info@luxuryautoshowcase.com</p>
+              <p>luxegoautospa@gmail.com</p>
             </div>
             <div className="info-item">
               <h4>Hours</h4>

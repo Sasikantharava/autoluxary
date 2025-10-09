@@ -10,9 +10,9 @@ const About = () => {
   const videoRef = useRef(null);
   
   // Counter animations
-  const yearsCount = useCountUp(15, isVisible);
-  const customersCount = useCountUp(500, isVisible);
-  const satisfactionCount = useCountUp(100, isVisible);
+  const yearsCount = useCountUp(5, isVisible);
+  const customersCount = useCountUp(10, isVisible);
+  const satisfactionCount = useCountUp(98, isVisible);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -95,7 +95,7 @@ const About = () => {
             <h2 className="section-title">Crafting Automotive Dreams into Reality</h2>
             <p className="about-description">
               At our premium automotive studio, we transform ordinary vehicles into extraordinary masterpieces. 
-              With over 15 years of expertise in high-performance modifications, luxury detailing, and custom 
+              With over 5 years of expertise in high-performance modifications, luxury detailing, and custom 
               automotive solutions, we deliver unparalleled craftsmanship that exceeds expectations.
             </p>
             <div className="stats-container">

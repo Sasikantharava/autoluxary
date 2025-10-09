@@ -153,11 +153,11 @@ const Footer = () => {
               </p>
               <p>
                 <i className="fas fa-phone"></i>
-                +1 (555) 123-4567
+                +44 7776 648820
               </p>
               <p>
                 <i className="fas fa-envelope"></i>
-                info@luxuryautoshowcase.com
+                luxegoautospa@gmail.com
               </p>
               <p>
                 <i className="fas fa-clock"></i>
