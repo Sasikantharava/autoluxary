@@ -3,8 +3,8 @@ import { FaPhone, FaWhatsapp } from 'react-icons/fa';
 import './ContactFloatingButtons.css';
 
 const ContactFloatingButtons = () => {
-  const phoneNumber = '+44 7776 648820'; // Replace with your actual number
-  const whatsappNumber = '+44 7776 648820'; // Replace with your actual WhatsApp number
+  const phoneNumber = '7721482404'; // Replace with your actual number
+  const whatsappNumber = '7721482404'; // Replace with your actual WhatsApp number
   const whatsappMessage = 'Hello! I would like to get more information about your automotive services.';
 
   const handlePhoneClick = () => {
